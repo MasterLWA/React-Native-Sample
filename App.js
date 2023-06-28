@@ -1,13 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import React,{useState} from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+
 
 export default function App() {
+
+  const [name,setName] = useState('Lakindu');
+  const [person,setPerson] = useState({name:'Lakindu',age:24});
+  
+  const clickHandler = () => {
+    setName('Lakindu Widuranga');
+    setPerson({name:'Lakindu Widuranga',age:25});
+  }
+
+
   return (
     <View style={styles.container}>
-      <Text style={{color: 'blue'}}>Hello World</Text>
-      <Text style={{color: 'green'}}>Hello World</Text>
-      <Text style={{color: 'yellow'}}>Hello World</Text>
+      <Text>My name is {name}</Text>
+      <Text>my name is {person.name}. my age is {person.age} </Text>
+      <Text style={styles.buttonContainer}>
+        <Button title='Update State' onPress={clickHandler}></Button>
+      </Text>
     </View>
   );
 }
@@ -19,4 +31,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  ButtonContainer:{
+    marginTop:20
+  }
 });
+
